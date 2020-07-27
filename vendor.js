@@ -56465,6 +56465,185 @@ ShareModule.ctorParameters = function () { return []; };
 
 /***/ }),
 
+/***/ "./node_modules/ng2-adsense/fesm5/ng2-adsense.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/ng2-adsense/fesm5/ng2-adsense.js ***!
+  \*******************************************************/
+/*! exports provided: ADSENSE_TOKEN, AdsenseComponent, AdsenseModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADSENSE_TOKEN", function() { return ADSENSE_TOKEN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdsenseComponent", function() { return AdsenseComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdsenseModule", function() { return AdsenseModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
+
+var ADSENSE_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('AdsenseConfig');
+
+var AdsenseComponent = /** @class */ (function () {
+    function AdsenseComponent(config) {
+        this.config = config;
+        /** can be manually set if you need all ads on a page to have same id page-xxx */
+        this.adRegion = 'page-' + Math.floor(Math.random() * 10000) + 1;
+    }
+    AdsenseComponent.prototype.ngOnInit = function () {
+        var config = this.config;
+        function use(source, defaultValue) {
+            return config && source !== undefined ? source : defaultValue;
+        }
+        this.adClient = use(this.adClient, config.adClient);
+        this.adSlot = use(this.adSlot, config.adSlot);
+        this.adFormat = use(this.adFormat, config.adFormat || 'auto');
+        this.display = use(this.display, config.display || 'block');
+        this.width = use(this.width, config.width);
+        this.height = use(this.height, config.height);
+        this.layout = use(this.layout, config.layout);
+        this.layoutKey = use(this.layoutKey, config.layoutKey);
+        this.pageLevelAds = use(this.pageLevelAds, config.pageLevelAds);
+        this.timeOutRetry = use(this.timeOutRetry, config.timeOutRetry || 200);
+        this.adtest = use(this.adtest, config.adtest);
+        this.fullWidthResponsive = use(this.fullWidthResponsive, config.fullWidthResponsive);
+    };
+    AdsenseComponent.prototype.ngOnDestroy = function () {
+        var iframe = this.ins.nativeElement.querySelector('iframe');
+        if (iframe && iframe.contentWindow) {
+            iframe.src = 'about:blank';
+            iframe.remove();
+        }
+    };
+    /**
+     * attempts to push the ad twice. Usually if one doesn't work the other
+     * will depeding on if the browser has the adsense code cached and
+     * if its the first page to be loaded
+     */
+    AdsenseComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        var res = this.push();
+        if (res instanceof TypeError) {
+            setTimeout(function () { return _this.push(); }, this.timeOutRetry);
+        }
+    };
+    AdsenseComponent.prototype.push = function () {
+        var p = {};
+        if (this.pageLevelAds) {
+            p.google_ad_client = this.adClient;
+            p.enable_page_level_ads = true;
+        }
+        try {
+            var adsbygoogle = window.adsbygoogle;
+            adsbygoogle.push(p);
+            return true;
+        }
+        catch (e) {
+            return e;
+        }
+    };
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
+    ], AdsenseComponent.prototype, "adClient", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
+    ], AdsenseComponent.prototype, "adSlot", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
+    ], AdsenseComponent.prototype, "adFormat", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
+    ], AdsenseComponent.prototype, "adRegion", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
+    ], AdsenseComponent.prototype, "display", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
+    ], AdsenseComponent.prototype, "width", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
+    ], AdsenseComponent.prototype, "height", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
+    ], AdsenseComponent.prototype, "layout", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
+    ], AdsenseComponent.prototype, "layoutKey", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
+    ], AdsenseComponent.prototype, "pageLevelAds", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Number)
+    ], AdsenseComponent.prototype, "timeOutRetry", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
+    ], AdsenseComponent.prototype, "adtest", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Boolean)
+    ], AdsenseComponent.prototype, "fullWidthResponsive", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('ins', { read: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
+    ], AdsenseComponent.prototype, "ins", void 0);
+    AdsenseComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ng2-adsense,ng-adsense',
+            template: "\n  <ins #ins class=\"adsbygoogle\"\n    [style.display]=\"display\"\n    [style.width.px]=\"width\"\n    [style.height.px]=\"height\"\n    [attr.data-ad-client]=\"adClient\"\n    [attr.data-ad-slot]=\"adSlot\"\n    [attr.data-ad-format]=\"adFormat\"\n    [attr.data-ad-region]=\"adRegion\"\n    [attr.data-layout]=\"layout\"\n    [attr.data-adtest]=\"adtest\"\n    [attr.data-layout-key]=\"layoutKey\"\n    [attr.data-full-width-responsive]=\"fullWidthResponsive\">\n  </ins>\n  ",
+            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].OnPush
+        }),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ADSENSE_TOKEN)),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [Object])
+    ], AdsenseComponent);
+    return AdsenseComponent;
+}());
+
+var AdsenseModule = /** @class */ (function () {
+    function AdsenseModule() {
+    }
+    AdsenseModule_1 = AdsenseModule;
+    AdsenseModule.forRoot = function (config) {
+        if (config === void 0) { config = {}; }
+        return {
+            ngModule: AdsenseModule_1,
+            providers: [{ provide: ADSENSE_TOKEN, useValue: config }],
+        };
+    };
+    var AdsenseModule_1;
+    AdsenseModule = AdsenseModule_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+            exports: [AdsenseComponent],
+            declarations: [AdsenseComponent],
+        })
+    ], AdsenseModule);
+    return AdsenseModule;
+}());
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+//# sourceMappingURL=ng2-adsense.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/rxjs-compat/_esm5/BehaviorSubject.js":
 /*!***********************************************************!*\
   !*** ./node_modules/rxjs-compat/_esm5/BehaviorSubject.js ***!
