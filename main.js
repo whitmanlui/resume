@@ -109,11 +109,12 @@ var AppComponent = /** @class */ (function () {
                     company: "Breakup Tours Ltd.",
                     position: "Technical Lead",
                     desc: "",
-                    jobDutyDesc: "",
+                    jobDutyDesc: "Provide full-stack development of mobile app including front-end and back-end, server settings and maintenance. As a technical lead, I also provide technical advice, data analysis, estimate development time, as well as assign task to teammate(scrum)",
                     jobDuties: [
                         "Flutter for app development (Breakup Tours)",
                         "NodeJS with MySQL and for backend services",
-                        "Firebase as OAuth"
+                        "Firebase as OAuth",
+                        "Google Analytics and Flurry for data analysis"
                     ],
                     skills: ["Flutter", "NodeJs", "MySQL", "Firebase"]
                 },
@@ -122,7 +123,7 @@ var AppComponent = /** @class */ (function () {
                     company: "CASH Financial Services Group Ltd.",
                     position: "Full Stack Developer",
                     desc: "",
-                    jobDutyDesc: "",
+                    jobDutyDesc: "As a full-stack developer, follow the tasks assigned by superiors, think and write clear and reusable code",
                     jobDuties: [
                         "React-Native for app development (Alpha-i)",
                         "NodeJS with MongoDB and for backend services",
