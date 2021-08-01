@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+import 'package:resume_flutter/widgets/header.dart';
+
+class HomePage extends StatefulWidget {
+  HomePage() : super();
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Header(),
+          ],
+        ),
+      ),
+    );
+  }
+}
