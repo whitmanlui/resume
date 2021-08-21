@@ -12,18 +12,49 @@ class RightBody extends StatefulWidget {
 class _RightBodyState extends State<RightBody> {
   @override
   Widget build(BuildContext context) {
-    return Section(
-      title: 'SKILLS & TOOLS',
-      child: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: Data.skillsAndTools.length,
-        itemBuilder: (BuildContext context, int i) {
-          return SkillsAndTollsSection(
-            skillsAndTools: Data.skillsAndTools[i],
-          );
-        },
-      ),
+    return Column(
+      children: [
+        Section(
+          title: 'SKILLS & TOOLS',
+          child: ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: Data.skillsAndTools.length,
+            itemBuilder: (BuildContext context, int i) {
+              return SkillsAndTollsSection(
+                skillsAndTools: Data.skillsAndTools[i],
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 30),
+        Section(
+          title: 'LANGUAGES',
+          child: Wrap(
+            direction: Axis.vertical,
+            spacing: 8.0,
+            children: Data.languages
+                .map(
+                  (e) => RichText(
+                    text: TextSpan(
+                      text: e.name,
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                      children: [
+                        TextSpan(
+                          text: '(${e.familiarity})',
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+        const SizedBox(height: 30),
+      ],
     );
   }
 }
