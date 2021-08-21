@@ -30,19 +30,31 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Whitman Lui`s Online Resume',
       theme: ThemeData(
-          primaryColor: Color(0xff434f5e),
-          textTheme: TextTheme(
-            headline4: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-            headline5: TextStyle(
-              color: Colors.white,
-            ),
-            bodyText2: TextStyle(
-              color: Colors.white,
-            ),
-          )),
+        primaryColor: Color(0xff434f5e),
+        textTheme: TextTheme(
+          //header
+          headline4: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+          headline5: TextStyle(
+            color: Colors.white,
+          ),
+          bodyText2: TextStyle(
+            color: Colors.white,
+          ),
+          // Section
+          subtitle1: TextStyle(
+            color: Color(0xff434f5e),
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0,
+          ),
+          caption: TextStyle(
+            color: Colors.grey,
+            fontSize: 12.0,
+          ),
+        ),
+      ),
       home: HomePage(),
     );
   }

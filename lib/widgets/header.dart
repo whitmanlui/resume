@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:resume_flutter/constants/data.dart';
 import 'package:resume_flutter/responsive.dart';
 
 class Header extends StatefulWidget {
@@ -10,11 +11,6 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-  String _name = 'WHITMAN LUI (呂鼎廉)';
-  String _title = 'Technical Lead';
-  String _email = 'luiwhitman@gmail.com';
-  String _phoneNo = '+852 9833 4079';
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -39,11 +35,11 @@ class _HeaderState extends State<Header> {
                         const SizedBox(height: 20),
                       ],
                       Text(
-                        _name,
+                        Data.name,
                         style: Theme.of(context).textTheme.headline4,
                       ),
                       Text(
-                        _title,
+                        Data.title,
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       const SizedBox(height: 20),
@@ -59,7 +55,7 @@ class _HeaderState extends State<Header> {
                             ),
                           ),
                           const SizedBox(width: 5),
-                          Text(_email),
+                          Text(Data.email),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -75,7 +71,7 @@ class _HeaderState extends State<Header> {
                             ),
                           ),
                           const SizedBox(width: 5),
-                          Text(_phoneNo),
+                          Text(Data.phoneNo),
                         ],
                       ),
                       if (Responsive.isMobileLarge(context)) ...[
@@ -110,11 +106,7 @@ class Logo extends StatelessWidget {
 
 class ContextBlock extends StatelessWidget {
   ContextBlock();
-
-  final String _whatsapp = '9833 4079';
-  final String _telegram = '@loadingLW';
-  final String _github = 'whitmanlui';
-
+  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -132,7 +124,7 @@ class ContextBlock extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 5),
-            Text(_whatsapp),
+            Text(Data.whatsapp),
           ],
         ),
         const SizedBox(height: 10),
@@ -148,7 +140,7 @@ class ContextBlock extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 5),
-            Text(_telegram),
+            Text(Data.telegram),
           ],
         ),
         const SizedBox(height: 10),
@@ -164,7 +156,7 @@ class ContextBlock extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 5),
-            Text(_github),
+            Text(Data.github),
           ],
         ),
       ],
