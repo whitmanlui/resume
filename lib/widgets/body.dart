@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume_flutter/constants/data.dart';
-import 'package:resume_flutter/responsive.dart';
 import 'package:resume_flutter/widgets/section.dart';
-import 'package:resume_flutter/widgets/work_experience_section.dart';
 
 class Body extends StatefulWidget {
   Body() : super();
@@ -27,6 +24,30 @@ class _BodyState extends State<Body> {
           );
         },
       ),
+    );
+  }
+}
+
+class WorkExperienceSection extends StatelessWidget {
+  final WorkExperience item;
+
+  WorkExperienceSection({
+    required this.item,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          item.companyName,
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
+        Divider(
+          color: Theme.of(context).primaryColor,
+        ),
+      ],
     );
   }
 }

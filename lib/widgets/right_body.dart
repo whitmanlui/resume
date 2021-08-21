@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume_flutter/constants/data.dart';
-import 'package:resume_flutter/responsive.dart';
 import 'package:resume_flutter/widgets/section.dart';
 
 class RightBody extends StatefulWidget {
@@ -43,7 +41,9 @@ class SkillsAndTollsSection extends StatelessWidget {
       children: [
         Text(
           item.name,
-          style: Theme.of(context).textTheme.caption,
+          style: Theme.of(context).textTheme.caption!.copyWith(
+                color: Theme.of(context).primaryColor,
+              ),
         ),
         const SizedBox(height: 2),
         LayoutBuilder(
