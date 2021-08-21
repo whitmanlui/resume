@@ -54,6 +54,23 @@ class _RightBodyState extends State<RightBody> {
           ),
         ),
         const SizedBox(height: 30),
+        Section(
+          title: 'INTERESTS',
+          child: Wrap(
+            direction: Axis.vertical,
+            spacing: 8.0,
+            children: Data.interests
+                .map(
+                  (e) => Text(
+                    e,
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
       ],
     );
   }
