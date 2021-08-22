@@ -74,6 +74,22 @@ class _HeaderState extends State<Header> {
                           Text(Data.phoneNo),
                         ],
                       ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            width: 20,
+                            child: FaIcon(
+                              FontAwesomeIcons.link,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(Data.website),
+                        ],
+                      ),
                       if (Responsive.isMobileLarge(context)) ...[
                         const SizedBox(height: 10),
                         ContextBlock(),
@@ -106,7 +122,7 @@ class Logo extends StatelessWidget {
 
 class ContextBlock extends StatelessWidget {
   ContextBlock();
-  
+
   @override
   Widget build(BuildContext context) {
     return Column(

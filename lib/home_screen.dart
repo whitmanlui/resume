@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_flutter/responsive.dart';
 import 'package:resume_flutter/widgets/body.dart';
 import 'package:resume_flutter/widgets/header.dart';
 import 'package:resume_flutter/widgets/right_body.dart';
@@ -21,19 +22,27 @@ class _HomePageState extends State<HomePage> {
             Header(),
             Container(
               padding: const EdgeInsets.all(30),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Body(),
-                  ),
-                  const SizedBox(width: 30),
-                  Expanded(
-                    child: RightBody(),
-                  )
-                ],
-              ),
+              child: Responsive.isMobile(context)
+                  ? Column(
+                      children: [
+                        Body(),
+                        const SizedBox(height: 30),
+                        RightBody(),
+                      ],
+                    )
+                  : Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: Body(),
+                        ),
+                        const SizedBox(width: 30),
+                        Expanded(
+                          child: RightBody(),
+                        )
+                      ],
+                    ),
             )
           ],
         ),

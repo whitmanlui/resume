@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_flutter/constants/data.dart';
+import 'package:resume_flutter/responsive.dart';
 import 'package:resume_flutter/widgets/section.dart';
 
 class Body extends StatefulWidget {
@@ -74,21 +75,37 @@ class WorkExperienceSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      item.title,
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                    Expanded(
+                      child: Text(
+                        item.title,
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
                     ),
-                    Text(
-                      item.companyName,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    )
+                    if (!Responsive.isMobileLarge(context))
+                      Expanded(
+                        child: Text(
+                          item.companyName,
+                          style: Theme.of(context).textTheme.bodyText1,
+                          maxLines: 2,
+                          textAlign: TextAlign.end,
+                        ),
+                      )
                   ],
                 ),
                 const SizedBox(height: 5),
+                if (Responsive.isMobileLarge(context)) ...[
+                  Text(
+                    item.companyName,
+                    style: Theme.of(context).textTheme.bodyText1,
+                    maxLines: 2,
+                    textAlign: TextAlign.end,
+                  ),
+                  const SizedBox(height: 5),
+                ],
                 Text(
                   item.timePeriod ?? '',
                   style: Theme.of(context)

@@ -1,6 +1,7 @@
 class Data {
   static String name = 'WHITMAN LUI (呂鼎廉)';
   static String email = 'luiwhitman@gmail.com';
+  static String website = 'https://whitmanlui.github.io/resume/';
   static String phoneNo = '+852 9833 4079';
   static String whatsapp = '9833 4079';
   static String telegram = '@loadingLW';
