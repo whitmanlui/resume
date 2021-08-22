@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume_flutter/constants/data.dart';
 import 'package:resume_flutter/responsive.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Header extends StatefulWidget {
   Header() : super();
@@ -43,52 +44,34 @@ class _HeaderState extends State<Header> {
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            width: 20,
-                            child: Icon(
-                              Icons.email,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(Data.email),
-                        ],
+                      Link(
+                        icon: Icon(
+                          Icons.email,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                        text: Data.email,
+                        url: 'mailto:${Data.email}',
                       ),
                       const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            width: 20,
-                            child: FaIcon(
-                              FontAwesomeIcons.mobileAlt,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(Data.phoneNo),
-                        ],
+                      Link(
+                        icon: FaIcon(
+                          FontAwesomeIcons.mobileAlt,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                        text: Data.phoneNo,
+                        url: 'tel:${Data.phoneNo}',
                       ),
                       const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            width: 20,
-                            child: FaIcon(
-                              FontAwesomeIcons.link,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(Data.website),
-                        ],
+                      Link(
+                        icon: FaIcon(
+                          FontAwesomeIcons.link,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                        text: Data.website,
+                        url: Data.website,
                       ),
                       if (Responsive.isMobileLarge(context)) ...[
                         const SizedBox(height: 10),
@@ -120,6 +103,40 @@ class Logo extends StatelessWidget {
   }
 }
 
+class Link extends StatelessWidget {
+  final Widget icon;
+  final String text;
+  final String url;
+
+  Link({
+    required this.icon,
+    required this.text,
+    required this.url,
+  });
+
+  void _launchURL(BuildContext context, String url) async {
+    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _launchURL(context, url),
+      child: Row(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            width: 20,
+            child: icon,
+          ),
+          const SizedBox(width: 5),
+          Text(text),
+        ],
+      ),
+    );
+  }
+}
+
 class ContextBlock extends StatelessWidget {
   ContextBlock();
 
@@ -128,52 +145,34 @@ class ContextBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: 20,
-              child: FaIcon(
-                FontAwesomeIcons.whatsapp,
-                color: Colors.white,
-                size: 20,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Text(Data.whatsapp),
-          ],
+        Link(
+          icon: FaIcon(
+            FontAwesomeIcons.whatsapp,
+            color: Colors.white,
+            size: 20,
+          ),
+          text: Data.whatsapp,
+          url: 'https://api.whatsapp.com/send?phone=${Data.phoneNo}',
         ),
         const SizedBox(height: 10),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: 20,
-              child: FaIcon(
-                FontAwesomeIcons.telegram,
-                color: Colors.white,
-                size: 20,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Text(Data.telegram),
-          ],
+        Link(
+          icon: FaIcon(
+            FontAwesomeIcons.telegram,
+            color: Colors.white,
+            size: 20,
+          ),
+          text: Data.telegram,
+          url: 'https://telegram.me/loadingLW',
         ),
         const SizedBox(height: 10),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: 20,
-              child: FaIcon(
-                FontAwesomeIcons.github,
-                color: Colors.white,
-                size: 20,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Text(Data.github),
-          ],
+        Link(
+          icon: FaIcon(
+            FontAwesomeIcons.github,
+            color: Colors.white,
+            size: 20,
+          ),
+          text: Data.github,
+          url: 'https://github.com/whitmanlui',
         ),
       ],
     );
