@@ -1,6 +1,5 @@
 class Data {
   static String name = 'WHITMAN LUI (呂鼎廉)';
-  static String title = 'Technical Lead';
   static String email = 'luiwhitman@gmail.com';
   static String phoneNo = '+852 9833 4079';
   static String whatsapp = '9833 4079';
@@ -10,14 +9,14 @@ class Data {
     WorkExperience(
       title: 'Senior Analyst Programmer',
       companyName: 'Megahub Ltd.',
-      timePeriod: '2019/05 - Present',
+      timePeriod: '2020/08 - Present',
       achievements:
-          'Provide full-stack development of mobile app including front-end and back-end, server settings and maintenance. As a technical lead, I also provide technical advice, data analysis, estimate development time, as well as assign task to teammate(scrum)',
+          'As a head of Flutter team, besides coding, I have to do code review to ensure that the coding styles of the teams are similar, reduce redundant work and write reusable code. Also, I will provide technical/code advice to colleagues. As the team expands, I have to hire someone for the team, and I think attitude is the most important condition for me to hire someone.',
       jobDuties: [
-        'Flutter for app development (Breakup Tours)',
-        'NodeJS with MySQL for backend services',
-        'Firebase as OAuth',
-        'Google Analytics and Flurry for data analysis'
+        'Flutter for app development',
+        'Code review',
+        'Interview',
+        'Technical advice'
       ],
       technologiesUsed: [
         'Flutter',
@@ -27,7 +26,7 @@ class Data {
     WorkExperience(
       title: 'Technical Lead',
       companyName: 'Breakup Tours Ltd.',
-      timePeriod: '2019/05 - Present',
+      timePeriod: '2019/05 - 2020/08',
       achievements:
           'Provide full-stack development of mobile app including front-end and back-end, server settings and maintenance. As a technical lead, I also provide technical advice, data analysis, estimate development time, as well as assign task to teammate(scrum)',
       jobDuties: [

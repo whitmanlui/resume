@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:resume_flutter/home_screen.dart';
 
@@ -10,10 +11,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return MaterialApp(
       builder: (context, widget) => ResponsiveWrapper.builder(
         BouncingScrollWrapper.builder(context, widget!),
-        // maxWidth: 1200,
         maxWidth: 1024,
         minWidth: 450,
         defaultScale: true,
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Whitman Lui`s Online Resume',
       theme: ThemeData(
         primaryColor: Color(0xff434f5e),
-        textTheme: TextTheme(
+        textTheme: GoogleFonts.notoSansTextTheme(textTheme).copyWith(
           //header
           headline4: TextStyle(
             color: Colors.white,

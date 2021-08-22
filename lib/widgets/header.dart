@@ -39,7 +39,7 @@ class _HeaderState extends State<Header> {
                         style: Theme.of(context).textTheme.headline4,
                       ),
                       Text(
-                        Data.title,
+                        Data.workExperiences.first.title,
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       const SizedBox(height: 20),
