@@ -14,3 +14,11 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# Release
+git checkout flutter-production
+flutter build web --release
+cp -R ./build/web/* ./docs
+git add .
+git commit --amend -m "build production"
+git push -f githubpage flutter-production
