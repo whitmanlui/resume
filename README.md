@@ -16,5 +16,9 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 # Release
-Run flutter build web --release
-Copy to github repo
+git checkout flutter-production
+flutter build web --release or flutter build web --web-renderer html --release
+cp -R ./build/web/* ./docs
+git add .
+git commit --amend -m "build production"
+git push -f githubpage flutter-production
