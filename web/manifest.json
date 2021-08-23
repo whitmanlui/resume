@@ -1,11 +1,11 @@
 {
-    "name": "resume_flutter",
-    "short_name": "resume_flutter",
+    "name": "Whitman Lui`s Online Resume",
+    "short_name": "Online Resume",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Whitman Lui`s Online Resume - Flutter example",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
