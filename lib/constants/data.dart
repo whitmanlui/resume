@@ -8,7 +8,7 @@ class Data {
   static String github = 'whitmanlui';
   static List<WorkExperience> workExperiences = [
     WorkExperience(
-      title: 'Senior Analyst Programmer',
+      title: 'System Analyst',
       companyName: 'Megahub Ltd.',
       timePeriod: '2020/08 - Present',
       achievements:
