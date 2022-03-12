@@ -17,7 +17,8 @@ class Data {
         'Flutter for app development',
         'Code review',
         'Interview',
-        'Technical advice'
+        'Technical advice',
+        'Coordinate the work'
       ],
       technologiesUsed: [
         'Flutter',
