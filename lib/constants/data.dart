@@ -23,6 +23,7 @@ class Data {
       technologiesUsed: [
         'Flutter',
         'Fastlane',
+        'Browserstack',
       ],
     ),
     WorkExperience(
